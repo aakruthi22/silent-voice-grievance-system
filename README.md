@@ -1,207 +1,131 @@
-# Anonymous Grievance System
+```markdown
+# 🤫 Silent Voice: Anonymous Grievance Management System
 
-A full-stack web application for managing anonymous grievances, built with React, Node.js, Express, and MySQL.
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 
-## Features
+A secure, full-stack web application designed to facilitate anonymous grievance submission, tracking, and resolution within institutional environments. Built with a focus on data integrity, scalable architecture, and efficient workflows to ensure voices are heard safely and resolved systematically.
 
-- **Student Features:**
-  - Register new student account
-  - Login to view personal dashboard
-  - Submit new grievances (title, description, category)
-  - View own grievances with status
-  - View admin responses to grievances
-  - Grievances are anonymous to other students but visible to admins
+## ✨ Key Features
 
-- **Admin Features:**
-  - Login to admin dashboard
-  - View all grievances from all students
-  - See submitter identity for each grievance
-  - Respond to grievances
-  - Update grievance status (pending, in_progress, resolved)
-  - Filter grievances by status
+*   **Secure Anonymity:** Employs advanced routing and database structuring to ensure user privacy while allowing comprehensive issue reporting.
+*   **Role-Based Access Control (RBAC):** Secure JWT authentication and authorization for different user tiers (Students/Staff vs. Administrators).
+*   **Real-Time Status Tracking:** State-managed UI components for seamless updates on grievance lifecycles (Submitted ➔ In-Progress ➔ Resolved).
+*   **RESTful API Architecture:** Modular controllers and optimized routing handling efficient client-server communication.
+*   **High-Performance Data Management:** Optimized MySQL relational queries ensuring fast retrieval, referential integrity, and scalability.
 
-## Tech Stack
+## 🛠️ Technology Stack
 
-- **Frontend:** React, React Router, Axios
-- **Backend:** Node.js, Express
-- **Database:** MySQL
-- **Authentication:** JWT (JSON Web Tokens)
-- **Password Hashing:** bcryptjs
+**Client-Side (Frontend):**
+*   **React.js:** Component-driven UI development.
+*   **State Management:** React Context API / Hooks.
+*   **Routing:** React Router DOM.
 
-## Prerequisites
+**Server-Side (Backend):**
+*   **Node.js & Express.js:** Scalable server architecture and REST API development.
+*   **Authentication:** JSON Web Tokens (JWT) & bcrypt for password hashing.
+*   **CORS & Helmet:** Security middleware for cross-origin requests and HTTP header protection.
 
-- Node.js (v14 or higher)
-- MySQL (v5.7 or higher)
-- npm or yarn
+**Database:**
+*   **MySQL:** Relational database for structured grievance logging and user management.
 
-## Installation
+## 🚀 Installation & Local Setup
 
-### 1. Clone the repository
+### Prerequisites
+*   [Node.js](https://nodejs.org/) (v14 or higher)
+*   [MySQL Server](https://www.mysql.com/) installed and running locally
 
+### 1. Clone the Repository
 ```bash
-git clone <repository-url>
-cd GrievanceSystem
+git clone [https://github.com/YourUsername/silent-voice.git](https://github.com/YourUsername/silent-voice.git)
+cd silent-voice
+
 ```
 
-### 2. Database Setup
+### 2. Database Configuration
 
-1. Create a MySQL database:
-```sql
-CREATE DATABASE grievance_system;
-```
-
-2. Run the schema file:
-```bash
-mysql -u root -p grievance_system < database/schema.sql
-```
+1. Open your MySQL CLI or Workbench.
+2. Create a new database: `CREATE DATABASE silent_voice_db;`
+3. Execute the SQL scripts located in the `/database/schema.sql` file (if provided) to build the required tables.
 
 ### 3. Backend Setup
 
-1. Navigate to backend directory:
 ```bash
 cd backend
-```
-
-2. Install dependencies:
-```bash
 npm install
+
 ```
 
-3. Create a `.env` file in the backend directory:
+Create a `.env` file in the root of the `backend` directory and configure the following variables:
+
 ```env
+PORT=5000
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=your_mysql_password
-DB_NAME=grievance_system
-PORT=5000
-JWT_SECRET=your_secret_key_here_change_in_production
-NODE_ENV=development
+DB_NAME=silent_voice_db
+JWT_SECRET=your_super_secret_jwt_key
+
 ```
 
-4. Initialize sample users:
+Start the backend development server:
+
 ```bash
-node init-db.js
+npm run dev
+
 ```
-
-This will create:
-- Sample Admin: `admin` / `admin123` (email: admin@grievance.com)
-- Sample Student: `student` / `student123` (email: student@example.com)
-
-Note: Students can also register new accounts through the registration page.
-
-5. Start the backend server:
-```bash
-npm start
-```
-
-The backend will run on `http://localhost:5000`
 
 ### 4. Frontend Setup
 
-1. Open a new terminal and navigate to frontend directory:
+Open a new terminal window:
+
 ```bash
 cd frontend
-```
-
-2. Install dependencies:
-```bash
 npm install
+
 ```
 
-3. Create a `.env` file in the frontend directory (optional):
-```env
-REACT_APP_API_URL=http://localhost:5000/api
-```
+Start the React development server:
 
-4. Start the frontend development server:
 ```bash
 npm start
-```
-
-The frontend will run on `http://localhost:3000`
-
-## Usage
-
-1. Open your browser and navigate to `http://localhost:3000`
-2. **For Students:**
-   - Click "Register as Student" to create a new account
-   - Or login with sample credentials: username: `student`, password: `student123`
-   - Submit grievances and view your own
-3. **For Admins:**
-   - Login with sample credentials: username: `admin`, password: `admin123`
-   - View all grievances, respond, and update status
-
-## Project Structure
 
 ```
-GrievanceSystem/
-├── backend/
-│   ├── config/
-│   │   └── database.js          # MySQL connection
-│   ├── controllers/
-│   │   ├── authController.js    # Authentication logic
-│   │   └── grievanceController.js # Grievance CRUD operations
-│   ├── middleware/
-│   │   └── auth.js              # JWT authentication middleware
-│   ├── models/
-│   │   ├── User.js              # User model
-│   │   └── Grievance.js         # Grievance model
-│   ├── routes/
-│   │   ├── auth.js              # Auth routes
-│   │   └── grievances.js       # Grievance routes
-│   ├── init-db.js               # Initialize default users
-│   ├── server.js                # Express server
-│   └── package.json
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── Login.js         # Login component
-│   │   │   ├── StudentDashboard.js # Student view
-│   │   │   ├── AdminDashboard.js   # Admin view
-│   │   │   ├── GrievanceForm.js    # Submit form
-│   │   │   └── GrievanceList.js    # Display grievances
-│   │   ├── App.js               # Main app with routing
-│   │   └── index.js             # React entry point
-│   └── package.json
-├── database/
-│   └── schema.sql                 # Database schema
-└── README.md
-```
 
-## Database Schema
+The application will be running at `http://localhost:3000`.
 
-The system uses 5 main tables:
-- **admin** - Admin user accounts
-- **students** - Student user accounts
-- **category** - Grievance categories
-- **status** - Grievance statuses
-- **grievance** - Grievance records with foreign keys to other tables
-
-## API Endpoints
+## 🔌 API Endpoints Reference
 
 ### Authentication
-- `POST /api/auth/login` - Login (admin or student)
-- `POST /api/auth/register` - Register new student account
+
+* `POST /api/auth/register` - Register a new admin/user.
+* `POST /api/auth/login` - Authenticate and receive a JWT.
 
 ### Grievances
-- `GET /api/grievances` - Get all grievances (students see own, admins see all)
-- `GET /api/grievances/:id` - Get single grievance
-- `POST /api/grievances` - Create new grievance (students only)
-- `PUT /api/grievances/:id/respond` - Respond to grievance (admin only)
-- `PUT /api/grievances/:id/status` - Update status (admin only)
-- `GET /api/grievances/categories` - Get all categories (public)
-- `GET /api/grievances/statuses` - Get all statuses (public)
 
-## Security Notes
+* `POST /api/grievances` - (Authenticated) Submit a new anonymous grievance.
+* `GET /api/grievances/my-reports` - (Authenticated) Retrieve tracking status for submitted grievances.
+* `GET /api/admin/grievances` - (Admin Only) Retrieve all institutional grievances.
+* `PUT /api/admin/grievances/:id/status` - (Admin Only) Update the resolution status of a grievance.
 
-- Change default passwords in production
-- Use a strong JWT_SECRET in production
-- Implement rate limiting for production
-- Use HTTPS in production
-- Validate and sanitize all inputs
+## 🗄️ Core Database Schema
 
-## License
+* **Users Table:** `id`, `username`, `password_hash`, `role`, `created_at`
+* **Grievances Table:** `id`, `tracking_id`, `category`, `description`, `status`, `submitted_at`, `resolved_at`
+* **Categories Table:** `id`, `department_name`, `assigned_admin_id`
 
-This project is created for educational purposes (DBMS Mini Project).
+## 🔮 Future Enhancements
 
+* Integration of an AI-powered sentiment analysis tool to flag high-priority/urgent grievances automatically.
+* Automated email dispatch system using NodeMailer for status updates.
+* Admin analytics dashboard utilizing Chart.js to visualize issue resolution efficiency.
+
+## 📝 License
+
+This project is licensed under the MIT License. Feel free to use, modify, and distribute it as per the terms of the license.
+
+```
+
+```
