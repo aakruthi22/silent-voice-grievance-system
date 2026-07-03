@@ -1,0 +1,95 @@
+.grievance-form-container {
+  margin-bottom: 30px;
+}
+
+.grievance-form {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.grievance-form h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.grievance-form .form-group {
+  margin-bottom: 20px;
+}
+
+.grievance-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
+}
+
+.grievance-form input,
+.grievance-form select,
+.grievance-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.grievance-form input:focus,
+.grievance-form select:focus,
+.grievance-form textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.grievance-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.cancel-btn {
+  padding: 10px 20px;
+  background: #f5f5f5;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.cancel-btn:hover {
+  background: #e0e0e0;
+}
+
+.grievance-form .submit-btn {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+
+.grievance-form .submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.grievance-form .submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
