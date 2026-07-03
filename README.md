@@ -1,4 +1,3 @@
-```markdown
 # 🤫 Silent Voice: Anonymous Grievance Management System
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -126,6 +125,5 @@ The application will be running at `http://localhost:3000`.
 
 This project is licensed under the MIT License. Feel free to use, modify, and distribute it as per the terms of the license.
 
-```
 
-```
+
